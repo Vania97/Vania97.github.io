@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>C端产品设计基础 | Vania‘s Blog</title><meta name="author" content="Vania"><meta name="copyright" content="Vania"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C端产品设计设计基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C端产品设计基础">
+<meta property="og:url" content="http://example.com/2022/11/20/C%E7%AB%AF%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Vania‘s Blog">
+<meta property="og:description" content="C端产品设计设计基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://w.wallhaven.cc/full/4o/wallhaven-4ox3z9.jpg">
+<meta property="article:published_time" content="2022-11-20T06:30:00.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:41:18.428Z">
+<meta property="article:author" content="Vania">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/4o/wallhaven-4ox3z9.jpg"><link rel="shortcut icon" href="/./img/%E4%B8%AA%E4%BA%BAlogo.png"><link rel="canonical" href="http://example.com/2022/11/20/C%E7%AB%AF%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Vania","link":"链接: ","source":"来源: Vania‘s Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C端产品设计基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-20 16:41:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/vania.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://w.wallhaven.cc/full/4o/wallhaven-4ox3z9.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Vania‘s Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C端产品设计基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-20T06:30:00.000Z" title="发表于 2022-11-20 14:30:00">2022-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-20T08:41:18.428Z" title="更新于 2022-11-20 16:41:18">2022-11-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C端产品设计基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><br>
+
+<h2 id="C端产品从0到1的设计流程"><a href="#C端产品从0到1的设计流程" class="headerlink" title="C端产品从0到1的设计流程"></a>C端产品从0到1的设计流程</h2><ul>
+<li><p>需求的收集</p>
+<ul>
+<li><p><strong>通过战略规划、竞品分析、用户调研与反馈获得需求，计入《需求池》</strong>，根据“不同的阶段和战略、资源投入”划分出优先级，输出《版本Feature List》。</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th align="center">小功能</th>
+<th align="center">功能描述</th>
+<th align="center">优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>内容列表</strong></td>
+<td align="center">以列表方式展示内容、包括图文和视频</td>
+<td align="center"><strong>高</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>内容详情（图文）</strong></td>
+<td align="center">图文详情页展示，互动（留言，点赞，转发，关注等）</td>
+<td align="center"><strong>高</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>内容详情（视频）</strong></td>
+<td align="center">视频详情页展示，互动（留言，点赞，转发，关注等）</td>
+<td align="center"><strong>高</strong></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>产品主结构设计</p>
+<ul>
+<li><p>根据Feature List确定产品的主交互结构，包含功能模块。</p>
+<ul>
+<li><p>根据主功能确定主导航</p>
+</li>
+<li><p><strong>选择参考产品与对标竞品</strong>（看用户更接受什么）</p>
+</li>
+<li><p>尽量借鉴主流产品交互</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.behance.net/gallery/33213393/">https://www.behance.net/gallery/33213393/</a>_</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>功能设计</p>
+<ul>
+<li><p>功能描述：</p>
+<ul>
+<li><p>功能的背景介绍</p>
+</li>
+<li><p>功能结构图与流程图</p>
+</li>
+<li><p><img src="https://image.woshipm.com/wp-files/2020/05/yDS8xjVK8XmJw3Cc4S9R.png" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://www.woshipm.com/pd/3904788.html">https://www.woshipm.com/pd/3904788.html</a></p>
+</li>
+</ul>
+</li>
+<li><p>主界面设计：</p>
+<ul>
+<li>列表页、详情页</li>
+<li>操作入口</li>
+<li><img src="https://preview.qiantucdn.com/58pic/40/10/73/24X58PICm58PICAxgUHCNa54G_PIC2018.png!qt324new_nowater" alt="img"></li>
+</ul>
+</li>
+<li><p>关联界面设计：</p>
+<ul>
+<li>各种弹窗与提示</li>
+<li>页面交互关系描述</li>
+<li><img src="https://img.zcool.cn/community/016c03609537e311013e3b7d230730.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,w_1280,limit_1/sharpen,100" alt="img"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>组合原型图输出</p>
+<ul>
+<li><p>将设计完的原型图进行组合，输出高保真&#x2F;低保真原型图，用于用户、领导、研发等角色的确认</p>
+<table>
+<thead>
+<tr>
+<th align="center">原型类型</th>
+<th align="center">使用用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">高保真原型</td>
+<td align="center">用于用户&#x2F;高层确认（一般是新产品）</td>
+</tr>
+<tr>
+<td align="center">低保真原型</td>
+<td align="center">用于研发确认技术可行性，版本升级迭代</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>输出PRD</p>
+<ul>
+<li><p>原型确认完毕之后，按照格式制作PRD文档，准备需求评审，进入研发</p>
+<table>
+<thead>
+<tr>
+<th align="center">PRD软件</th>
+<th align="center">软件优势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Axure PRD</td>
+<td align="center">快速制作，方便交互展示</td>
+</tr>
+<tr>
+<td align="center">Word PRD</td>
+<td align="center">结构清晰，方便共同编辑</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="C端产品设计要点"><a href="#C端产品设计要点" class="headerlink" title="C端产品设计要点"></a>C端产品设计要点</h2><ul>
+<li><p>重视用户体验</p>
+<ul>
+<li><p>使用目的：大众导向</p>
+</li>
+<li><p>使用门槛：低</p>
+</li>
+<li><p>信息展示：图多字少（理解门槛低）</p>
+<p><img src="https://image.uisdc.com/wp-content/uploads/2020/07/xb-xhs-fj2.jpg" alt="img"></p>
+</li>
+</ul>
+</li>
+<li><p>敬畏、尊重用户使用习惯，不要让用户在操作上有学习成本</p>
+<ul>
+<li>沿用成熟产品的设计</li>
+<li>尽量避免交互上创新（创新往往体现在功能上）</li>
+<li>大胆向成熟产品致敬（学习现有的操作习惯）</li>
+</ul>
+</li>
+<li><p>产品思维+创新能力</p>
+<ul>
+<li><p>方向：技术、内容、增长模式</p>
+</li>
+<li><p>方法：旧要素，新组合（xx + xx &#x3D;&#x3D; ？）</p>
+</li>
+<li><p>实施：MVP低成本试错</p>
+<br></li>
+</ul>
+</li>
+</ul>
+<h2 id="C端内容导向"><a href="#C端内容导向" class="headerlink" title="C端内容导向"></a>C端内容导向</h2><ul>
+<li><p>多关注用户，少折腾设计，不作死就不会死（C端产品设计方向）</p>
+</li>
+<li><p>小红书与蘑菇街区别：</p>
+<table>
+<thead>
+<tr>
+<th align="center">产品</th>
+<th align="center">内容导向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">小红书</td>
+<td align="center">内容（社区、达人、生活）</td>
+</tr>
+<tr>
+<td align="center">蘑菇街</td>
+<td align="center">商品（商城、商家、商品）</td>
+</tr>
+</tbody></table>
+<p><strong>多关注内容，少折腾设计</strong></p>
+</li>
+</ul>
+<br>
+
+<h2 id="C端产品种类"><a href="#C端产品种类" class="headerlink" title="C端产品种类"></a>C端产品种类</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.qimai.cn/rank/index/brand/all/genre/5000/device/iphone/country/cn">https://www.qimai.cn/rank/index/brand/all/genre/5000/device/iphone/country/cn</a></p>
+</li>
+<li><p>查看产品有没有相关竞品</p>
+</li>
+<li><p>总结大环境下的产品生态，或者用户的使用行为：当前时间为工具、电商、内容</p>
+<br></li>
+</ul>
+<p><strong>APP使用占比</strong></p>
+<p><img src="https://aliypic.oss-cn-hangzhou.aliyuncs.com/Uploadfiles/20220428/2022042816485429.004.png" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://news.iresearch.cn/yx/2022/04/430163.shtml">https://news.iresearch.cn/yx/2022/04/430163.shtml</a></p>
+<p>​		大致发现，网民在短视频和即使通讯上的使用率比较高，所以我们可以依附这两类大体量的APP来打好用户基础。</p>
+<br>
+
+<p><strong>什么是兴趣电商</strong></p>
+<ul>
+<li><p>在兴趣电商的场景下，用户需求最初是不明确的，兴趣电商能够主动帮助用户发现潜藏的需求。</p>
+<table>
+<thead>
+<tr>
+<th align="center">过去</th>
+<th align="center">未来</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">需要才买</td>
+<td align="center">喜欢就买</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>用户需要有指导性的内容来去让你了解产品的信息，才能让用户知道产品的信息。</p>
+</li>
+</ul>
+<br>
+
+<p><strong>兴趣电商逻辑闭环</strong></p>
+<ul>
+<li><p>用户产生阶段和应对策略</p>
+<table>
+<thead>
+<tr>
+<th align="center">要点</th>
+<th align="center">应对策略</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">如何喜欢？</td>
+<td align="center"><strong>促活：</strong>社区：产生内容，用户消费内容产生留存</td>
+</tr>
+<tr>
+<td align="center">如何买？</td>
+<td align="center"><strong>转化：</strong>电商：打通购买路径，为KOL变现</td>
+</tr>
+<tr>
+<td align="center">如何宣传？</td>
+<td align="center"><strong>拉新：</strong>微信：打通宣传路径，提升新增</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>喜欢看书，建立社群，每次看书在兴趣社群里发放内容，再根据书籍商品上游联系变现。（一般而言这种方式仅适用于工具）</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Vania</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/20/C%E7%AB%AF%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">http://example.com/2022/11/20/C%E7%AB%AF%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Vania‘s Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://w.wallhaven.cc/full/4o/wallhaven-4ox3z9.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/10/27/%E5%B8%82%E5%9C%BA%E4%B8%8E%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">市场与竞品分析</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/vania.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Vania</div><div class="author-info__description">Vania‘s Blog，欢迎访问</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Vania97" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2234175509@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E7%AB%AF%E4%BA%A7%E5%93%81%E4%BB%8E0%E5%88%B01%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">C端产品从0到1的设计流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E7%AB%AF%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">C端产品设计要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E7%AB%AF%E5%86%85%E5%AE%B9%E5%AF%BC%E5%90%91"><span class="toc-number">3.</span> <span class="toc-text">C端内容导向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E7%AB%AF%E4%BA%A7%E5%93%81%E7%A7%8D%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">C端产品种类</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/C%E7%AB%AF%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" title="C端产品设计基础"><img src="https://w.wallhaven.cc/full/4o/wallhaven-4ox3z9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C端产品设计基础"/></a><div class="content"><a class="title" href="/2022/11/20/C%E7%AB%AF%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" title="C端产品设计基础">C端产品设计基础</a><time datetime="2022-11-20T06:30:00.000Z" title="发表于 2022-11-20 14:30:00">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/27/%E5%B8%82%E5%9C%BA%E4%B8%8E%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90/" title="市场与竞品分析"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="市场与竞品分析"/></a><div class="content"><a class="title" href="/2022/10/27/%E5%B8%82%E5%9C%BA%E4%B8%8E%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90/" title="市场与竞品分析">市场与竞品分析</a><time datetime="2022-10-27T15:13:44.483Z" title="发表于 2022-10-27 23:13:44">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/26/%E8%A7%A3%E6%9E%84%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" title="解构产品经理"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="解构产品经理"/></a><div class="content"><a class="title" href="/2022/10/26/%E8%A7%A3%E6%9E%84%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" title="解构产品经理">解构产品经理</a><time datetime="2022-10-26T15:28:40.704Z" title="发表于 2022-10-26 23:28:40">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/25/C%E8%AF%AD%E8%A8%80%E4%B8%ADif%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E6%9E%90/" title="C语言中if语句的常见问题解析"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言中if语句的常见问题解析"/></a><div class="content"><a class="title" href="/2022/10/25/C%E8%AF%AD%E8%A8%80%E4%B8%ADif%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E6%9E%90/" title="C语言中if语句的常见问题解析">C语言中if语句的常见问题解析</a><time datetime="2022-10-25T14:04:07.457Z" title="发表于 2022-10-25 22:04:07">2022-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/24/%E5%A6%82%E4%BD%95%E6%92%B0%E5%86%99%E4%BA%A7%E5%93%81%E4%BD%93%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="如何撰写产品体验报告"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何撰写产品体验报告"/></a><div class="content"><a class="title" href="/2022/10/24/%E5%A6%82%E4%BD%95%E6%92%B0%E5%86%99%E4%BA%A7%E5%93%81%E4%BD%93%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="如何撰写产品体验报告">如何撰写产品体验报告</a><time datetime="2022-10-24T13:55:30.220Z" title="发表于 2022-10-24 21:55:30">2022-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Vania</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
